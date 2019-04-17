@@ -116,4 +116,12 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    public static void forceWait(int milliseconds){
+        try{
+            Thread.sleep(milliseconds);
+        }catch (Exception e){
+            e.fillInStackTrace();
+        }
+    }
+
 }

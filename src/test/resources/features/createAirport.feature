@@ -11,4 +11,4 @@ Feature: Login
     Given 'PHP travel section Airport' page is loaded whit url
     And fill credentials on 'Airport' page data
   |code|name|cityCode|cityName|countryName|countryCode|timeZone|lat|lon|city|
-    |8080|BOA CBBA|591 |Cochabamba|Cochabamba|4         |UTM     |446|5466|CBBA
+    |8081|BOA CBBA|591 |Cochabamba|Cochabamba|4         |UTM     |446|5466|CBBA|

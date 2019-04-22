@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +45,9 @@ public class Vuelo extends BasePage {
     private WebElement city;
 
     @FindBy(css = "a[data-after=\"list\"]")
-    private WebElement save;
+    //@FindBy(xpath = "//a[text()=\"Save & Return\"]")
+    //@FindBy(xpath = "//a[text()=\"Save & New\"]")
+    private WebElement botonSave;
 
     public Vuelo(){
 
@@ -67,6 +70,10 @@ public class Vuelo extends BasePage {
         lon.sendKeys(data.get(0).get("lon"));
         city.sendKeys(data.get(0).get("city"));
 
-        CommonEvents.clickButton(save);
+        CommonEvents.forceWait(5000);
+        System.out.println("ESTE ES EL TEXTO DEL BOTON SAVE");
+        System.out.println(botonSave.getText());
+        //CommonEvents.clickButton(botonSave);
+        botonSave.click();
     }
 }

@@ -11,9 +11,9 @@ public final class LoadPage {
         return new Login();
     }
 
-    public static Aeropuerto aeropuertoPage(String url) {
-        ManageDriver.getInstance().getWebDriver()
-                .navigate().to(url);
+    public static Aeropuerto aeropuertoPage() {
+       // ManageDriver.getInstance().getWebDriver()
+        //        .navigate().to();
         return new Aeropuerto();
     }
 }

@@ -35,6 +35,6 @@ public class StepsDefinitionPHPtravel {
 
     @Given("^'PHP travel section Airport' page is loaded whit url$")
     public void phpTravelSectionAirportPageIsLoadedWhitUrl() {
-        aeropuerto = LoadPage.aeropuertoPage("https://www.phptravels.net/admin/flights/airports");
+        aeropuerto = LoadPage.aeropuertoPage();
     }
 }

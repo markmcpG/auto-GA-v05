@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 
 public class GeneralSteps {

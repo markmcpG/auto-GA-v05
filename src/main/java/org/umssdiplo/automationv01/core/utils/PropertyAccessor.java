@@ -8,6 +8,9 @@ import java.util.Properties;
 public class PropertyAccessor {
     private static final String BROWSER = "browser";
     private static final String BASE_URL = "baseurl";
+    private static final String USER_NAME = "username";
+    private static final String PASSWORD = "password";
+    private static final String BASE_URI = "postman.baseuri";
 
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
@@ -56,10 +59,14 @@ public class PropertyAccessor {
     }
 
     public String getUser() {
-        return null;
+        return getDataProperty(USER_NAME);
     }
 
     public String getPassword() {
-        return null;
+        return getDataProperty(PASSWORD);
+    }
+
+    public String getBaseUri() {
+        return getDataProperty(BASE_URI);
     }
 }

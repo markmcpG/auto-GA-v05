@@ -35,6 +35,11 @@ dependencies {
 
     // cucumber-testng
     testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+
+    //rest-assured
+    compile 'io.rest-assured:json-path:3.0.3'
+    compile 'io.rest-assured:rest-assured:3.0.3'
+    compile group: 'io.rest-assured', name: 'json-schema-validator', version: '3.0.5'
 }
 
 task runFeatures(type: Test) {

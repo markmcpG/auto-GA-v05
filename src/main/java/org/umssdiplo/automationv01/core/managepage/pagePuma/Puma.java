@@ -21,7 +21,7 @@ public class Puma extends BasePage {
     public void hoverOnMen(){
         Actions action = new Actions(ManageDriver.getInstance().getWebDriver());
         action.moveToElement(menuMens).build().perform();
-        CommonEvents.forceWait(1000);
+        //CommonEvents.forceWait(1000);
     }
 
     public void clickSectionMens(){

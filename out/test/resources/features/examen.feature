@@ -3,7 +3,7 @@ Feature: Puma
     Given 'adidas mx' page is loaded
     And hover on menu 'mens'
     And click on subMenu 'futbol'
-    And get Price of product name "<nombre-producto>"
+    And get Price of product name "<nombre-producto>" verify with "<precio>"
     And click on product "<nombre-producto>"
     And select talla "<talla>"
     And click on add-cart button
@@ -15,8 +15,8 @@ Feature: Puma
     And Total should be "<precio-total>"
     Examples:
       | nombre-producto            | talla  | cantidad | precio | precio-total|
-#       |Calzado de Fútbol X 18.3 TF| MX 9.5 | 1        | $1,329.00    |$1,428.00  |
-       |Calzado de Fútbol Nemeziz 18.3 Terreno Firme| MX 9.5 | 1        | $1,999.00 |$1,999.00|
+      |Calzado de Fútbol X 18.3 TF| MX 9.5 | 1        | $1,329.00    |$1,428.00  |
+#      |Calzado de Fútbol Nemeziz 18.3 Terreno Firme| MX 9.5 | 1        | $1,999.00 |$1,999.00|
 
 
 #EXAMEN

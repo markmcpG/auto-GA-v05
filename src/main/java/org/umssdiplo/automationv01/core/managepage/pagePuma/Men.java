@@ -23,16 +23,20 @@ public class Men extends BasePage {
     }
 
     public String getPriceOfProductName(String name){
-        String price = "";
+
         cssFind = "div[title=\""+ name + "\"]";
         producto = getWebElement(cssFind);
-        if(producto != null){
-            String cssPrice = "span[class=\"gl-price__value gl-price__value--sale\"]";
-            //WebElement precio = webDriver.findElement(By.cssSelector(cssFind));
-            WebElement precio = getWebElement(cssPrice);
-            price = precio.getText();
+        String cssPrice;
+        if(name.equals("Calzado de Fútbol X 18.3 TF")){
+            cssPrice = "span[class=\"gl-price__value gl-price__value--sale\"]";
         }
-        return price;
+        else{
+           cssPrice = "span[class=\"gl-price__value\"]";
+        }
+
+        WebElement precio = getWebElement(cssPrice);
+
+        return precio.getText();
     }
 
     public void clickOnProductName(String name){

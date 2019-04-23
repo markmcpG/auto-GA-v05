@@ -44,11 +44,6 @@ public class StepsDefinitionAdida {
         sectionMens.clickFirtProduct();
     }
 
-    @And("^get Price of product name \"([^\"]*)\"$")
-    public void getPriceOfProductName(String name) {
-        sectionMens.getPriceOfProductName(name);
-    }
-
     @And("^select talla \"([^\"]*)\"$")
     public void selectTalla(String talla){
         sectionMens.selectTalla(talla);
@@ -110,4 +105,11 @@ public class StepsDefinitionAdida {
         producto = sectionMens.getWebElement(cssFind);
         Assert.assertEquals(producto.getText(),cand);
     }
+
+    @And("^get Price of product name \"([^\"]*)\" verify with \"([^\"]*)\"$")
+    public void getPriceOfProductNameVerifyWith(String nameProduct, String price) {
+        String precioRecuperado = sectionMens.getPriceOfProductName(nameProduct);
+        Assert.assertEquals(price,precioRecuperado+".00");
+    }
+
 }

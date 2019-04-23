@@ -25,18 +25,18 @@ public class StepsDefinitionPHPtravel {
     }
 
 
-    @And("^click on 'Car' button in 'Header' page$")
-    public void clickOnCarButtonInHeaderPage() {
-        automovil = new Automovil();
-        automovil.SeleccionarCars();
 
-
-    }
 
 
     @And("^'PHP travel section Cars' page is loaded$")
     public void phpTravelSectionCarsPageIsLoaded() {
+        automovil = LoadPage.carsPage();
+    }
 
 
+
+    @And("^fill information on 'Add' data$")
+    public void fillInformationOnAddData(DataTable dt) throws Throwable {
+        automovil.setDatos(dt);
     }
 }

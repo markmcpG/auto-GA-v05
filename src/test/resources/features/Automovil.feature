@@ -6,8 +6,15 @@ Feature: Automovil
     And fill credentials on 'Login' data
       |username|password|
       |admin@phptravels.com|demoadmin|
-    And click on 'Car' button in 'Header' page
+
 
 
   Scenario: Create
-    Given 'PHP travel section Cars' page is loaded
+    Given 'PHP travel' page is loaded
+    And fill credentials on 'Login' data
+      |username|password|
+      |admin@phptravels.com|demoadmin|
+    And 'PHP travel section Cars' page is loaded
+    And fill information on 'Add' data
+    |descripcion|
+    |automovil grande|

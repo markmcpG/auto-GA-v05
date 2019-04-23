@@ -10,5 +10,11 @@ public final class LoadPage {
                 .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new Login();
     }
+    public static Automovil carsPage() {
+        Automovil autoRes = new Automovil();
+        autoRes.SeleccionarCars();
+        return autoRes;
+    }
+
 
 }

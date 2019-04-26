@@ -10,32 +10,68 @@ import java.util.List;
 import java.util.Map;
 
 public class Hotel extends BasePage {
-    @FindBy(xpath = "//*[@id=\"social-sidebar-menu\"]/li[7]/a")
+    @FindBy(css = "a[href=\"#Hotels\"]")
     private WebElement botonHotels;
-    @FindBy(xpath = "//*[@id=\"Hotels\"]/li[1]/a")
+    @FindBy(css = "a[href=\"https://www.phptravels.net/admin/hotels\"]")
     private WebElement botonHotel;
-    @FindBy(xpath = "//*[contains(@type,'sub')]")
+    @FindBy(css = "button[type=\"submit\"]")
     private WebElement botonAdd;
+    @FindBy(css = "select[data-placeholder=\"Select\"]")
+    private WebElement selectStatus;
+    @FindBy(css = "option[value=\"No\"]")
+    private WebElement optionNo;
 
     @FindBy(name="hotelname")
     private WebElement nameInputData;
+    @FindBy(css = "body[class=\"cke_editable cke_editable_themed cke_contents_ltr cke_show_borders\"][xpath=\"1\"]")
+    private WebElement iframeDescripcion;
 
-    @FindBy(tagName = "iframe")
-    private WebElement descripTextarea;
-    @FindBy(css = "body.cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders:nth-child(2) > p:nth-child(1)")
-    private WebElement cuerpoIframe;
+    @FindBy(css = "select[data-placeholder=\"Select\"]")
+    private WebElement selectStars;
+    @FindBy(css = "option[value=\"3\"]")
+    private WebElement option3;
+    @FindBy(name="hoteltype")
+    private WebElement selectHotelType;
+    @FindBy(css = "option[value=\"191\"]")
+    private WebElement optionHotel;
+    @FindBy(name="isfeatured")
+    private WebElement selectFeature;
+    @FindBy(css = "option[value=\"no\"]")
+    private WebElement optionFeaNo;
 
-    public void fillInputData(DataTable datos){
+    public void clickMenuHotles(){
         CommonEvents.clickButton(botonHotels);
+    }
+    public void clickSubMenuHotlel(){
         CommonEvents.clickButton(botonHotel);
-        System.out.println("Nombre del boton "+botonAdd.getText());
+    }
+    public void clickButtonAdd() {
         CommonEvents.clickButton(botonAdd);
-        CommonEvents.forceWait(1000);
+    }
+    public void clickSelectStatus(){
+        CommonEvents.clickButton(selectStatus);
+    }
+    public void clickOptionStatusNo(){
+        CommonEvents.clickButton(optionNo);
+    }
+    public void clickSelectStars(){
+        CommonEvents.clickButton(selectStars);
+    }
+    public void clickOptionStar3(){
+        CommonEvents.clickButton(option3);
+    }
+    public void clickSelectHotelType(){
+        CommonEvents.clickButton(selectHotelType);
+    }
+    public void clickOptionHotelType(){
+        CommonEvents.clickButton(optionHotel);
+    }
+    public void fillInputData(DataTable datos){
+        System.out.println("IFRAME "+ iframeDescripcion.getTagName());
         List<Map<String,String>> data = datos.asMaps(String.class,String.class);
         nameInputData.sendKeys(data.get(0).get("name"));
-        System.out.println("IFRAMEEEEEEEEEEEEEEE " + descripTextarea.getTagName());
-        CommonEvents.forceWait(1000);
-        CommonEvents.clickButton(descripTextarea);
-        cuerpoIframe.sendKeys(data.get(0).get("Description"));
+        CommonEvents.setInputField(iframeDescripcion,"HOLA MUNDO");
+        CommonEvents.clickButton(selectFeature);
+        CommonEvents.clickButton(optionFeaNo);
     }
 }

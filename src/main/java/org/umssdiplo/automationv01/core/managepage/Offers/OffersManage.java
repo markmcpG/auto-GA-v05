@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
-import javax.swing.plaf.ButtonUI;
-
 public class OffersManage extends BasePage {
 
     @FindBy(css = "a[href=\"#SPECIAL_OFFERS\"]")
@@ -20,85 +18,114 @@ public class OffersManage extends BasePage {
 
     // Agregando Offers
     @FindBy(css = "select[name=\"offerstatus\"]")
-    private WebElement selectStatus;
+    private WebElement selectStatusAdd;
     @FindBy(css = "input[name=\"offertitle\"]")
-    private WebElement inputOfferTitle;
+    private WebElement inputOfferTitleAdd;
     @FindBy(css = "input[name=\"offerphone\"]")
-    private WebElement inputOfferPhone;
+    private WebElement inputOfferPhoneAdd;
     @FindBy(css = "input[name=\"offeremail\"]")
-    private WebElement inputOfferEmail;
+    private WebElement inputOfferEmailAdd;
     @FindBy(css = "input[name=\"offerprice\"]")
-    private WebElement inputOfferPrice;
+    private WebElement inputOfferPriceAdd;
     @FindBy(css = "input[name=\"ofrom\"]")
-    private WebElement inputOfferOFrom;
+    private WebElement inputOfferOFromAdd;
     @FindBy(css = "input[name=\"oto\"]")
-    private WebElement inputOfferOTo;
+    private WebElement inputOfferOToAdd;
+    // Begin textArea
     @FindBy(css = "textarea[name=\"offerdesc\"]")
-    private WebElement textAreaOfferDes;
+    private WebElement textAreaOfferDesAdd;
+    // End TextArea
     @FindBy(css = "button[id=\"add\"]")
-    private WebElement buttonSubmit;
+    private WebElement buttonSubmitAdd;
 
     // ELIMINAR UN OFFER
-    @FindBy(css = "div[class=\"panel-body\"]")
-    private WebElement divContenedor;
     @FindBy(css = "button[data-limit=\"all\"]")
     private WebElement buttonSearchAll;
-    //@FindBy(css = "a[id='104']")
+
+    // MODIFICAR OFFERS
+    @FindBy(css = "select[name=\"offerstatus\"]")
+    private WebElement selectStatusEdit;
+    @FindBy(css = "input[name=\"offertitle\"]")
+    private WebElement inputOfferTitleEdit;
+    @FindBy(css = "input[name=\"offerphone\"]")
+    private WebElement inputOfferPhoneEdit;
+    @FindBy(css = "input[name=\"offeremail\"]")
+    private WebElement inputOfferEmailEdit;
+    @FindBy(css = "input[name=\"offerprice\"]")
+    private WebElement inputOfferPriceEdit;
+    @FindBy(css = "input[name=\"ofrom\"]")
+    private WebElement inputOfferOFromEdit;
+    @FindBy(css = "input[name=\"oto\"]")
+    private WebElement inputOfferOToEdit;
+
+    @FindBy(css = "textarea[name=\"offerdesc\"]")
+    private WebElement textAreaOfferDesEdit;
+
+    @FindBy(css = "button[id=\"update\"]")
+    private WebElement buttonSubmitEdit;
 
 
 
-    public void clickMenuOffer(){
+    public OffersManage clickMenuOffer(){
         CommonEvents.scrollComponent(menuSelectOffer,webDriver);
         CommonEvents.clickButton(menuSelectOffer);
+        return this;
     }
-    public void clicksubMenuOffersManager(){
+    public OffersManage clicksubMenuOffersManager(){
         CommonEvents.clickButton(subMenuOffersManager);
+        return this;
     }
-    public void clickButtonAdd(){
+    public OffersManage clickButtonAdd(){
         CommonEvents.clickButton(buttonAdd);
+        return this;
     }
-    public void setSelectStatus(String status){
-        CommonEvents.selectOption(selectStatus,status);
+    // BEGIN FORMULARIO ADD
+    public OffersManage setSelectStatusAdd(String status){
+        CommonEvents.selectOption(selectStatusAdd,status);
+        return this;
     }
-    public void setInputOfferTitle(String title){
-        CommonEvents.setInputField(inputOfferTitle,title);
+    public OffersManage setInputOfferTitleAdd(String title){
+        CommonEvents.setInputField(inputOfferTitleAdd,title);
+        return this;
     }
-
-    public void setInputOfferPhone(String phone) {
-        CommonEvents.setInputField(inputOfferPhone,phone);
+    public OffersManage setInputOfferPhoneAdd(String phone) {
+        CommonEvents.setInputField(inputOfferPhoneAdd,phone);
+        return this;
     }
-
-    public void setInputOfferEmail(String emal) {
-        CommonEvents.setInputField(inputOfferEmail,emal);
+    public OffersManage setInputOfferEmailAdd(String emal) {
+        CommonEvents.setInputField(inputOfferEmailAdd,emal);
+        return this;
     }
-
-    public void setInputOfferPrice(String price) {
+    public OffersManage setInputOfferPriceAdd(String price) {
         CommonEvents.forceWait(6000);
-        CommonEvents.setInputField(inputOfferPrice,price);
+        CommonEvents.setInputField(inputOfferPriceAdd,price);
+        return this;
     }
-
-    public void setInputOfferOFrom(String dateFrom) {
-        CommonEvents.setInputField(inputOfferOFrom,dateFrom);
+    public OffersManage setInputOfferOFromAdd(String dateFrom) {
+        CommonEvents.setInputField(inputOfferOFromAdd,dateFrom);
+        return this;
     }
-
-    public void setInputOfferOTo(String dateTo) {
-        CommonEvents.setInputField(inputOfferOTo,dateTo);
-        CommonEvents.clickButton(inputOfferOTo);
+    public OffersManage setInputOfferOToAdd(String dateTo) {
+        CommonEvents.setInputField(inputOfferOToAdd,dateTo);
+        CommonEvents.clickButton(inputOfferOToAdd);
+        return this;
     }
-
     // insertando descripcion
-    public void setTextAreaDescripcion(String descri) {
-        CommonEvents.scrollComponent(buttonSubmit,webDriver);
-        textAreaOfferDes.click();
-        textAreaOfferDes.sendKeys(descri);
-        //CommonEvents.setInputField(textAreaOfferDes,descri);
+    public OffersManage setTextAreaDescripcionAdd(String descri) {
+        CommonEvents.scrollComponent(buttonSubmitAdd,webDriver);
+        //CommonEvents.setInputField(textAreaOfferDesAdd,descri);
+        return this;
     }
-    public void clickButtonSubmit(){
-        CommonEvents.clickButton(buttonSubmit);
+    public OffersManage clickButtonSubmitAdd(){
+        CommonEvents.clickButton(buttonSubmitAdd);
+        return this;
     }
-    public void clickButtonSearchAll(){
+    // END FORMULARIO ADD
+
+    public OffersManage clickButtonSearchAll(){
         CommonEvents.scrollComponent(buttonSearchAll,webDriver);
         //CommonEvents.clickButton(buttonSearchAll);
+        return this;
     }
     public boolean buscarOffers(String id){
         CommonEvents.forceWait(4000);
@@ -109,14 +136,72 @@ public class OffersManage extends BasePage {
         }
         return respuesta;
     }
+    // BEGIN ELIMINAR OFFERS
     public OffersManage verificarOfferAEliminar(String id){
         CommonEvents.forceWait(4000);
-        WebElement aux = webDriver.findElement(By.cssSelector("a[id=\""+id+"\"]"));
-        CommonEvents.scrollComponent(aux,webDriver);
-        CommonEvents.clickButton(aux);
-
+        WebElement elemento = webDriver.findElement(By.cssSelector("a[id=\""+id+"\"]"));
+        CommonEvents.scrollComponent(elemento,webDriver);
+        CommonEvents.clickButton(elemento);
         Alert alert = webDriver.switchTo().alert();
         alert.accept();
+        return this;
+    }
+    // END ELIMINAR OFFERS
+
+    // BEGIN EDIT
+    public OffersManage clickButtonEditOffer(String title){
+        title = title.replace(" ","-");
+        WebElement aux = webDriver.findElement(By.cssSelector("a[href=\"https://www.phptravels.net/admin/offers/manage/"+ title +"\"]"));
+        CommonEvents.scrollComponent(aux,webDriver);
+        CommonEvents.clickButton(aux);
+        return this;
+    }
+
+
+    public OffersManage setSelectStatusEdit(String status){
+        CommonEvents.selectOption(selectStatusEdit,status);
+        return this;
+    }
+    public OffersManage setInputOfferTitleEdit(String title){
+        CommonEvents.setInputField(inputOfferTitleEdit,title);
+        return this;
+    }
+
+    public OffersManage setInputOfferPhoneEdit(String phone) {
+        CommonEvents.setInputField(inputOfferPhoneEdit,phone);
+        return this;
+    }
+
+    public OffersManage setInputOfferEmailEdit(String emal) {
+        CommonEvents.setInputField(inputOfferEmailEdit,emal);
+        return this;
+    }
+
+    public OffersManage setInputOfferPriceEdit(String price) {
+        CommonEvents.forceWait(6000);
+        CommonEvents.setInputField(inputOfferPriceEdit,price);
+        return this;
+    }
+
+    public OffersManage setInputOfferOFromEdit(String dateFrom) {
+        CommonEvents.setInputField(inputOfferOFromEdit,dateFrom);
+        return this;
+    }
+
+    public OffersManage setInputOfferOToEdit(String dateTo) {
+        CommonEvents.setInputField(inputOfferOToEdit,dateTo);
+        CommonEvents.clickButton(inputOfferOToEdit);
+        return this;
+    }
+
+    // insertando descripcion
+    public OffersManage setTextAreaDescripcionEdit(String descri) {
+        CommonEvents.scrollComponent(buttonSubmitEdit,webDriver);
+        //CommonEvents.setInputField(textAreaOfferDesAdd,descri);
+        return this;
+    }
+    public OffersManage clickButtonSubmitEdit(){
+        CommonEvents.clickButton(buttonSubmitEdit);
         return this;
     }
 }

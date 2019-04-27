@@ -6,7 +6,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.Hoteles.Extras;
 import org.umssdiplo.automationv01.core.managepage.Hoteles.Hotel;
+import org.umssdiplo.automationv01.core.managepage.Hoteles.Room;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersManage;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersSetting;
@@ -14,10 +16,12 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionPHPtravel {
-    private Login login;
     private Hotel hotel;
+    private Login login;
+    private Room room;
     private OffersSetting offersSetting;
     private OffersManage offersManage;
+    private Extras extras;
 
     @Given("^'PHP travel' page is loaded$")
     public void phpTravelPageIsLoaded() throws Throwable {
@@ -33,57 +37,6 @@ public class StepsDefinitionPHPtravel {
     @Given("^'PHP travel section Hotels' page is loaded whit url$")
     public void phpTravelSectionHotelsPageIsLoadedWhitUrl() {
         hotel = LoadPage.hotelPage();
-    }
-
-    @And("^fill input data on 'Hotels' page data$")
-    public void fillInputDataOnHotelsPageData(DataTable datos) {
-        CommonEvents.forceWait(5000);
-        hotel.fillInputData(datos);
-    }
-
-    @And("^Click en menu HOTELS$")
-    public void clickEnMenuHOTELS() {
-        hotel.clickMenuHotles();
-    }
-
-    @And("^Click en el sub menu HOTEL$")
-    public void clickEnElSubMenuHOTEL() {
-        hotel.clickSubMenuHotlel();
-    }
-
-    @And("^Click en el Boton ADD$")
-    public void clickEnElBotonADD() {
-        hotel.clickButtonAdd();
-    }
-
-    @And("^Click en el Select STATUS$")
-    public void clickEnElSelectSTATUS() {
-        hotel.clickSelectStatus();
-    }
-
-    @And("^Click en el Option STATUS NO$")
-    public void clickEnElOptionSTATUSNO() {
-        hotel.clickOptionStatusNo();
-    }
-
-    @And("^Click en el Select STARS$")
-    public void clickEnElSelectSTARS() {
-        hotel.clickSelectStars();
-    }
-
-    @And("^Click en el 'OPTION STARS' elegir tres in page add  hotels$")
-    public void clickEnElOPTIONSTARSElegirTresInPageAddHotels() {
-        hotel.clickOptionStar3();
-    }
-
-    @And("^Click en el Select 'HOTEL TYPE' in page add hotels$")
-    public void clickEnElSelectHOTELTYPEInPageAddHotels() {
-        hotel.clickSelectHotelType();
-    }
-
-    @And("^Click en el Option 'HOTEL' in page add hotes$")
-    public void clickEnElOptionHOTELInPageAddHotes() {
-        hotel.clickOptionHotelType();
     }
 
     @Given("^'PHP travel section Offers Setting' page is loaded$")
@@ -143,49 +96,49 @@ public class StepsDefinitionPHPtravel {
 
     @And("^Select \"([^\"]*)\" in form offers manager Add$")
     public void selectInFormOffersManagerAdd(String status) throws Throwable {
-        offersManage.setSelectStatus(status);
+        offersManage.setSelectStatusAdd(status);
         //throw new PendingException();
     }
 
     @And("^Insert input Title \"([^\"]*)\" in form offers manager Add$")
     public void insertInputTitleInFormOffersManagerAdd(String title) throws Throwable {
-        offersManage.setInputOfferTitle(title);
+        offersManage.setInputOfferTitleAdd(title);
     }
 
     @And("^Insert input Phone \"([^\"]*)\" in form offers manager Add$")
     public void insertInputPhoneInFormOffersManagerAdd(String phone) throws Throwable {
-        offersManage.setInputOfferPhone(phone);
+        offersManage.setInputOfferPhoneAdd(phone);
     }
 
     @And("^Insert input Email \"([^\"]*)\" in form offers manager Add$")
     public void insertInputEmailInFormOffersManagerAdd(String email) throws Throwable {
-        offersManage.setInputOfferEmail(email);
+        offersManage.setInputOfferEmailAdd(email);
     }
 
     @And("^Insert input Price \"([^\"]*)\" in form offers manager Add$")
     public void insertInputPriceInFormOffersManagerAdd(String price) throws Throwable {
-        offersManage.setInputOfferPrice(price);
+        offersManage.setInputOfferPriceAdd(price);
     }
 
     @And("^Data Time From \"([^\"]*)\" in form offers manager Add$")
     public void dataTimeFromInFormOffersManagerAdd(String dataFrom) throws Throwable {
-        offersManage.setInputOfferOFrom(dataFrom);
+        offersManage.setInputOfferOFromAdd(dataFrom);
     }
 
     @And("^Data Time To \"([^\"]*)\" in form offers manager Add$")
     public void dataTimeToInFormOffersManagerAdd(String dataTo) throws Throwable {
-        offersManage.setInputOfferOTo(dataTo);
+        offersManage.setInputOfferOToAdd(dataTo);
     }
 
     @And("^Insert TextArea \"([^\"]*)\" in form offers manager Add$")
     public void insertTextAreaInFormOffersManagerAdd(String descri) throws Throwable {
-        offersManage.setTextAreaDescripcion(descri);
+        offersManage.setTextAreaDescripcionAdd(descri);
         //throw new PendingException();
     }
 
     @And("^Click Button 'Submit' in form offers manager Add$")
     public void clickButtonSubmitInFormOffersManagerAdd() {
-        offersManage.clickButtonSubmit();
+        offersManage.clickButtonSubmitAdd();
     }
 
     @And("^Clik en el Button 'All' in page Offers Manage$")
@@ -201,6 +154,193 @@ public class StepsDefinitionPHPtravel {
     public void clickButtonEliminarInPageOfferManager(String id) throws Throwable {
         offersManage.verificarOfferAEliminar(id);
        // throw new PendingException();
+    }
+
+
+    @And("^Click en Button 'EDIT' \"([^\"]*)\" in page offers manage$")
+    public void clickEnButtonEDITInPageOffersManage(String title) throws Throwable {
+        offersManage.clickButtonEditOffer(title);
+    }
+
+    @And("^Select Status \"([^\"]*)\" in form offers manager Edit$")
+    public void selectStatusInFormOffersManagerEdit(String status) throws Throwable {
+        offersManage.setSelectStatusEdit(status);
+    }
+
+    @And("^Insert input Title \"([^\"]*)\" in form offers manager Edit$")
+    public void insertInputTitleInFormOffersManagerEdit(String title) throws Throwable {
+        offersManage.setInputOfferTitleEdit(title);
+    }
+
+    @And("^Insert input Phone \"([^\"]*)\" in form offers manager Edit$")
+    public void insertInputPhoneInFormOffersManagerEdit(String phone) throws Throwable {
+        offersManage.setInputOfferPhoneEdit(phone);
+    }
+
+    @And("^Insert input Email \"([^\"]*)\" in form offers manager Edit$")
+    public void insertInputEmailInFormOffersManagerEdit(String email) throws Throwable {
+        offersManage.setInputOfferEmailEdit(email);
+    }
+
+    @And("^Insert input Price \"([^\"]*)\" in form offers manager Edit$")
+    public void insertInputPriceInFormOffersManagerEdit(String price) throws Throwable {
+        offersManage.setInputOfferPriceEdit(price);
+    }
+
+    @And("^Data Time From \"([^\"]*)\" in form offers manager Edit$")
+    public void dataTimeFromInFormOffersManagerEdit(String form) throws Throwable {
+        offersManage.setInputOfferOFromEdit(form);
+    }
+
+    @And("^Data Time To \"([^\"]*)\" in form offers manager Edit$")
+    public void dataTimeToInFormOffersManagerEdit(String to) throws Throwable {
+        offersManage.setInputOfferOToEdit(to);
+    }
+
+    @And("^Insert TextArea \"([^\"]*)\" in form offers manager Edit$")
+    public void insertTextAreaInFormOffersManagerEdit(String descri) throws Throwable {
+        offersManage.setTextAreaDescripcionEdit(descri);
+    }
+
+    @And("^Click Button 'Submit' in form offers manager Edit$")
+    public void clickButtonSubmitInFormOffersManagerEdit() {
+        offersManage.clickButtonSubmitEdit();
+    }
+
+    @Given("^'PHP travel section Rooms' page is loaded'$")
+    public void phpTravelSectionRoomsPageIsLoaded() {
+        room = LoadPage.roomPage();
+    }
+
+    @And("^Click en el Menu 'HOTELS' in home menu$")
+    public void clickEnElMenuHOTELSInHomeMenu() {
+        room.clickMenuHomeHotels();
+    }
+
+    @And("^Click en el Sub Menu 'ROOMS' of menu Hotels$")
+    public void clickEnElSubMenuROOMSOfMenuHotels() {
+        room.clickSubMenuHotelsRooms();
+    }
+
+    @And("^Click en el Button 'ADD' in ROOMS MANAGEMENT$")
+    public void clickEnElButtonADDInROOMSMANAGEMENT() {
+        room.clickButtonSubmitAddRoom();
+    }
+
+    @And("^Select Status \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void selectStatusInFormROOMSMANAGEMENTAdd(String status) throws Throwable {
+        room.setSelectStatusRoomAdd(status);
+    }
+
+    @And("^Insert input Room Type \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputRoomTypeInFormROOMSMANAGEMENTAdd(String type) throws Throwable {
+        room.setInputRoomTypeAdd(type);
+    }
+
+    @And("^Insert input Hotel \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputHotelInFormROOMSMANAGEMENTAdd(String hotel) throws Throwable {
+        room.setInputHotelRoomAdd(hotel);
+    }
+
+    @And("^Text Area input Room Description \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void textAreaInputRoomDescriptionInFormROOMSMANAGEMENTAdd(String descri) throws Throwable {
+        room.setTextAreaDescripcionRoomAdd(descri);
+    }
+
+    @And("^Insert input Price \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputPriceInFormROOMSMANAGEMENTAdd(String price) throws Throwable {
+        room.setInputPriceRoomAdd(price);
+    }
+
+    @And("^Insert input Quantity \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputQuantityInFormROOMSMANAGEMENTAdd(String quantity) throws Throwable {
+        room.setInputQuantityRoomAdd(quantity);
+    }
+
+    @And("^Insert input Minimum Stay \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputMinimumStayInFormROOMSMANAGEMENTAdd(String stay) throws Throwable {
+        room.setInputMinimunStayRoomAdd(stay);
+    }
+
+    @And("^Insert input Max Adults \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputMaxAdultsInFormROOMSMANAGEMENTAdd(String adults) throws Throwable {
+        room.setInputMaxAdultsRoomAdd(adults);
+    }
+
+    @And("^Insert input Max Children \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputMaxChildrenInFormROOMSMANAGEMENTAdd(String children) throws Throwable {
+        room.setInputMaxChildrenRoomAdd(children);
+    }
+
+
+    @And("^Insert input No\\. of Extra Beds \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputNoOfExtraBedsInFormROOMSMANAGEMENTAdd(String bebs) throws Throwable {
+        room.setInputNumExtraBebsRoomAdd(bebs);
+    }
+
+    @And("^Insert input Extra Bed Charges \"([^\"]*)\" in form ROOMS MANAGEMENT Add$")
+    public void insertInputExtraBedChargesInFormROOMSMANAGEMENTAdd(String charges) throws Throwable {
+        room.setInputBedChargesRoomAdd(charges);
+    }
+
+    @And("^Click Button 'Submit' in form ROOMS MANAGEMENT Add$")
+    public void clickButtonSubmitInFormROOMSMANAGEMENTAdd() {
+        room.clickButtonSumitRoomAdd();
+    }
+
+    @And("^Click en el Button 'EDIT' \"([^\"]*)\" in ROOMS MANAGEMENT$")
+    public void clickEnElButtonEDITInROOMSMANAGEMENT(String id) throws Throwable {
+        room.clickButtonEditRoom(id);
+    }
+
+    @And("^Click Button 'Submit' in form ROOMS MANAGEMENT Edit$")
+    public void clickButtonSubmitInFormROOMSMANAGEMENTEdit() {
+        room.clickButtonSubmitEditRoom();
+    }
+
+    @And("^Click Button 'Eliminar' in page ROOMS MANAGEMENT \"([^\"]*)\"$")
+    public void clickButtonEliminarInPageROOMSMANAGEMENT(String id) throws Throwable {
+        room.verificarRoomAEliminar(id);
+    }
+
+    @Given("^'PHP travel section EXTRAS' page is loaded'$")
+    public void phpTravelSectionEXTRASPageIsLoaded() {
+        extras = LoadPage.extrasPage();
+    }
+
+    @And("^Click en el Menu 'HOTELS' para Extras in home menu$")
+    public void clickEnElMenuHOTELSParaExtrasInHomeMenu() {
+        extras.clickMenuHomeHotes();
+    }
+
+    @And("^Click en el Sub Menu 'EXTRAS' of menu EXTRAS MANAGEMENT$")
+    public void clickEnElSubMenuEXTRASOfMenuEXTRASMANAGEMENT() {
+        extras.clickSubMenuHotelsExtras();
+    }
+
+    @And("^Click en el Button 'ADD' in EXTRAS MANAGEMENT$")
+    public void clickEnElButtonADDInEXTRASMANAGEMENT() {
+        extras.clickButtonSubmitAddExtras();
+    }
+
+    @And("^Insert input Name \"([^\"]*)\" in form EXTRAS MANAGEMENT$")
+    public void insertInputNameInFormEXTRASMANAGEMENT(String name) throws Throwable {
+        extras.setInputNameExtrasAdd(name);
+    }
+
+    @And("^Select option Status \"([^\"]*)\" in form EXTRAS MANAGEMENT$")
+    public void selectOptionStatusInFormEXTRASMANAGEMENT(String status) throws Throwable {
+        extras.setSelectStatusExtrasAdd(status);
+    }
+
+    @And("^Isert input Price \"([^\"]*)\" in form EXTRAS MANAGEMENT$")
+    public void isertInputPriceInFormEXTRASMANAGEMENT(String price) throws Throwable {
+        extras.setInputPriceExtrasAdd(price);
+    }
+
+    @And("^Click en el Button 'Save & Return' in form EXTRAS MANAGEMENT$")
+    public void clickEnElButtonSaveReturnInFormEXTRASMANAGEMENT() {
+        extras.clickButtonSaveReturnExtrasAdd();
     }
 
 

@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.core.utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
@@ -129,5 +130,10 @@ public class CommonEvents {
     public static void selectOption(WebElement selectOption, String option) {
         Select select = new Select(selectOption);
         select.selectByVisibleText(option);
+    }
+    public static void hoverMenus(WebElement webElement) {
+        Actions action = new Actions(ManageDriver.getInstance().getWebDriver());
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
+        action.moveToElement(webElement).perform();
     }
 }

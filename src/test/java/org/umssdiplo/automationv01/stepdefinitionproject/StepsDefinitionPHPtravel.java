@@ -12,7 +12,6 @@ import org.umssdiplo.automationv01.core.managepage.Hoteles.Room;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersManage;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersSetting;
-import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionPHPtravel {
@@ -344,5 +343,28 @@ public class StepsDefinitionPHPtravel {
     }
 
 
+    @Then("^Verify Extras \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
+    public void verifyExtrasInPageEXTRASMANAGEMENT(String id) throws Throwable {
+        Assert.assertEquals(extras.verificarElementoPasadoId(id),true);
+    }
 
+    @And("^Click en el Button 'EDIT' \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
+    public void clickEnElButtonEDITInPageEXTRASMANAGEMENT(String id) throws Throwable {
+        extras.clickButtonUpdateId(id);
+    }
+
+    @And("^Click en el Button 'Save & Return' in form Update EXTRAS MANAGEMENT$")
+    public void clickEnElButtonSaveReturnInFormUpdateEXTRASMANAGEMENT() {
+        extras.clickButtonSaveReturnExtrasUpdate();
+    }
+
+    @Then("^Verify Extras a 'Remove' \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
+    public void verifyExtrasARemoveInPageEXTRASMANAGEMENT(String id) throws Throwable {
+        Assert.assertEquals(extras.verficarElementoARemoveId(id),true);
+    }
+
+    @And("^Click en el Button 'REMOVE' \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
+    public void clickEnElButtonREMOVEInPageEXTRASMANAGEMENT(String id) throws Throwable {
+        extras.clickButtonDeleteExtraId(id);
+    }
 }

@@ -136,7 +136,7 @@ Feature: Login
 
 # END ROOMS DELETE
 
-# BEGIN EXTRAS
+# BEGIN EXTRAS ADD
   Scenario Outline: EXTRAS MANAGEMENT ADD page
     Given 'PHP travel section EXTRAS' page is loaded'
     And Click en el Menu 'HOTELS' para Extras in home menu
@@ -148,6 +148,31 @@ Feature: Login
     And Click en el Button 'Save & Return' in form EXTRAS MANAGEMENT
   Examples:
       |name           |status   |price|
-      |Matrimonials   |Yes  |50   |
+      |Matrimonials   |Yes      |50   |
 
 # END EXTRAS
+
+#BEGIN EXTRAS   UPDATE
+  Scenario Outline: EXTRAS MANAGEMENT UPDATE page
+    Given 'PHP travel section EXTRAS' page is loaded'
+    And Click en el Menu 'HOTELS' para Extras in home menu
+    And Click en el Sub Menu 'EXTRAS' of menu EXTRAS MANAGEMENT
+    Then Verify Extras "<id>" in page EXTRAS MANAGEMENT
+    And Click en el Button 'EDIT' "<id>" in page EXTRAS MANAGEMENT
+    And Insert input Name "<name>" in form EXTRAS MANAGEMENT
+    And Select option Status "<status>" in form EXTRAS MANAGEMENT
+    And Isert input Price "<price>" in form EXTRAS MANAGEMENT
+    And Click en el Button 'Save & Return' in form Update EXTRAS MANAGEMENT
+  Examples:
+      |id |name           |status   |price|
+      |14 |Matrimonials   |Yes      |50   |
+
+  Scenario Outline: EXTRAS MANAGEMENT Remove page
+    Given 'PHP travel section EXTRAS' page is loaded'
+    And Click en el Menu 'HOTELS' para Extras in home menu
+    And Click en el Sub Menu 'EXTRAS' of menu EXTRAS MANAGEMENT
+    Then Verify Extras a 'Remove' "<id>" in page EXTRAS MANAGEMENT
+    And Click en el Button 'REMOVE' "<id>" in page EXTRAS MANAGEMENT
+  Examples:
+      |id |
+      |15 |

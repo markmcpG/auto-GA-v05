@@ -118,7 +118,13 @@ public class Room extends BasePage {
     public Room clickButtonEditRoom(String id) {
         String css= "a[href=\"https://www.phptravels.net/admin/hotels/rooms/manage/"+91+"\"]";
         WebElement aux = webDriver.findElement(By.cssSelector(css));
-        CommonEvents.clickButton(aux);
+        if(aux!=null){
+            CommonEvents.clickButton(aux);
+        }
+        else{
+            System.out.println("Elemento no existe!!");
+        }
+
         return this;
     }
     public Room clickButtonSubmitEditRoom(){
@@ -131,9 +137,14 @@ public class Room extends BasePage {
     public Room verificarRoomAEliminar(String id){
         CommonEvents.forceWait(4000);
         WebElement aux = webDriver.findElement(By.cssSelector("a[id=\""+id+"\"]"));
-        CommonEvents.clickButton(aux);
-        Alert alert = webDriver.switchTo().alert();
-        alert.accept();
+        if (aux!=null) {
+            CommonEvents.clickButton(aux);
+            Alert alert = webDriver.switchTo().alert();
+            alert.accept();
+        }
+        else {
+            System.out.println("Elemento no ex");
+        }
         return this;
     }
 

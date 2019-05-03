@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.util.List;
+
 public class OffersManage extends BasePage {
 
     @FindBy(css = "a[href=\"#SPECIAL_OFFERS\"]")
@@ -58,9 +60,6 @@ public class OffersManage extends BasePage {
     @FindBy(css = "input[name=\"oto\"]")
     private WebElement inputOfferOToEdit;
 
-    @FindBy(css = "textarea[name=\"offerdesc\"]")
-    private WebElement textAreaOfferDesEdit;
-
     @FindBy(css = "button[id=\"update\"]")
     private WebElement buttonSubmitEdit;
 
@@ -103,6 +102,7 @@ public class OffersManage extends BasePage {
     }
     public OffersManage setInputOfferOFromAdd(String dateFrom) {
         CommonEvents.setInputField(inputOfferOFromAdd,dateFrom);
+        CommonEvents.clickButton(inputOfferOFromAdd);
         return this;
     }
     public OffersManage setInputOfferOToAdd(String dateTo) {
@@ -113,7 +113,11 @@ public class OffersManage extends BasePage {
     // insertando descripcion
     public OffersManage setTextAreaDescripcionAdd(String descri) {
         CommonEvents.scrollComponent(buttonSubmitAdd,webDriver);
-        //CommonEvents.setInputField(textAreaOfferDesAdd,descri);
+        String xpath = "/html[1]/body[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[1]/div[1]";
+        WebElement table_element = webDriver.findElement(By.xpath(xpath));
+        table_element.click();
+        table_element.sendKeys("MONTYYYYYYYYYYYYYYYYYYYY");
+
         return this;
     }
     public OffersManage clickButtonSubmitAdd(){
@@ -122,38 +126,61 @@ public class OffersManage extends BasePage {
     }
     // END FORMULARIO ADD
 
-    public OffersManage clickButtonSearchAll(){
-        CommonEvents.scrollComponent(buttonSearchAll,webDriver);
-        //CommonEvents.clickButton(buttonSearchAll);
-        return this;
-    }
-    public boolean buscarOffers(String id){
-        CommonEvents.forceWait(4000);
-        WebElement aux = webDriver.findElement(By.cssSelector("a[id=\""+id+"\"]"));
-        boolean respuesta= false;
-        if (aux!=null){
-            respuesta = true;
+
+    public boolean buscarOffers(String title){
+        boolean respuesta=false;
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(3);
+                if(tdElementName.getText().equals(title)){
+                    respuesta=true;
+                    break;
+                }
+            }
         }
         return respuesta;
     }
     // BEGIN ELIMINAR OFFERS
-    public OffersManage verificarOfferAEliminar(String id){
-        CommonEvents.forceWait(4000);
-        WebElement elemento = webDriver.findElement(By.cssSelector("a[id=\""+id+"\"]"));
-        CommonEvents.scrollComponent(elemento,webDriver);
-        CommonEvents.clickButton(elemento);
-        Alert alert = webDriver.switchTo().alert();
-        alert.accept();
+    public OffersManage verificarOfferAEliminar(String title){
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(3);
+                if(tdElementName.getText().equals(title)){
+                    WebElement tdElementButtons = td_collection.get(8);
+                    WebElement btnEliminar = tdElementButtons.findElement(By.cssSelector("a[title=\"DELETE\"]"));
+                    CommonEvents.clickButton(btnEliminar);
+                    Alert alert = webDriver.switchTo().alert();
+                    alert.accept();
+                    break;
+                }
+            }
+        }
         return this;
     }
     // END ELIMINAR OFFERS
 
     // BEGIN EDIT
     public OffersManage clickButtonEditOffer(String title){
-        title = title.replace(" ","-");
-        WebElement aux = webDriver.findElement(By.cssSelector("a[href=\"https://www.phptravels.net/admin/offers/manage/"+ title +"\"]"));
-        CommonEvents.scrollComponent(aux,webDriver);
-        CommonEvents.clickButton(aux);
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(3);
+                if(tdElementName.getText().equals(title)){
+                    WebElement tdElementButtons = td_collection.get(8);
+                    WebElement btnEdit = tdElementButtons.findElement(By.cssSelector("a[title=\"Edit\"]"));
+                    CommonEvents.clickButton(btnEdit);
+                    break;
+                }
+            }
+        }
         return this;
     }
 

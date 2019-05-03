@@ -140,18 +140,14 @@ public class StepsDefinitionPHPtravel {
         offersManage.clickButtonSubmitAdd();
     }
 
-    @And("^Clik en el Button 'All' in page Offers Manage$")
-    public void clikEnElButtonAllInPageOffersManage() {
-        offersManage.clickButtonSearchAll();
-    }
     @Then("^Verify Offers existente \"([^\"]*)\"$")
-    public void verifyOffersExistente(String id) throws Throwable {
-        Assert.assertEquals(offersManage.buscarOffers(id),true);
+    public void verifyOffersExistente(String title) throws Throwable {
+        Assert.assertEquals(offersManage.buscarOffers(title),true);
     }
 
     @And("^Click Button 'Eliminar' in page Offer Manager \"([^\"]*)\"$")
-    public void clickButtonEliminarInPageOfferManager(String id) throws Throwable {
-        offersManage.verificarOfferAEliminar(id);
+    public void clickButtonEliminarInPageOfferManager(String title) throws Throwable {
+        offersManage.verificarOfferAEliminar(title);
        // throw new PendingException();
     }
 
@@ -288,8 +284,8 @@ public class StepsDefinitionPHPtravel {
     }
 
     @And("^Click en el Button 'EDIT' \"([^\"]*)\" in ROOMS MANAGEMENT$")
-    public void clickEnElButtonEDITInROOMSMANAGEMENT(String id) throws Throwable {
-        room.clickButtonEditRoom(id);
+    public void clickEnElButtonEDITInROOMSMANAGEMENT(String room_Type) throws Throwable {
+        room.clickButtonEditRoom(room_Type);
     }
 
     @And("^Click Button 'Submit' in form ROOMS MANAGEMENT Edit$")
@@ -297,10 +293,6 @@ public class StepsDefinitionPHPtravel {
         room.clickButtonSubmitEditRoom();
     }
 
-    @And("^Click Button 'Eliminar' in page ROOMS MANAGEMENT \"([^\"]*)\"$")
-    public void clickButtonEliminarInPageROOMSMANAGEMENT(String id) throws Throwable {
-        room.verificarRoomAEliminar(id);
-    }
 
     @Given("^'PHP travel section EXTRAS' page is loaded'$")
     public void phpTravelSectionEXTRASPageIsLoaded() {
@@ -344,13 +336,13 @@ public class StepsDefinitionPHPtravel {
 
 
     @Then("^Verify Extras \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
-    public void verifyExtrasInPageEXTRASMANAGEMENT(String id) throws Throwable {
-        Assert.assertEquals(extras.verificarElementoPasadoId(id),true);
+    public void verifyExtrasInPageEXTRASMANAGEMENT(String name) throws Throwable {
+        Assert.assertEquals(extras.verificarElementoPasadoName(name),true);
     }
 
     @And("^Click en el Button 'EDIT' \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
-    public void clickEnElButtonEDITInPageEXTRASMANAGEMENT(String id) throws Throwable {
-        extras.clickButtonUpdateId(id);
+    public void clickEnElButtonEDITInPageEXTRASMANAGEMENT(String name) throws Throwable {
+        extras.clickButtonUpdateName(name);
     }
 
     @And("^Click en el Button 'Save & Return' in form Update EXTRAS MANAGEMENT$")
@@ -359,12 +351,24 @@ public class StepsDefinitionPHPtravel {
     }
 
     @Then("^Verify Extras a 'Remove' \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
-    public void verifyExtrasARemoveInPageEXTRASMANAGEMENT(String id) throws Throwable {
-        Assert.assertEquals(extras.verficarElementoARemoveId(id),true);
+    public void verifyExtrasARemoveInPageEXTRASMANAGEMENT(String name) throws Throwable {
+        Assert.assertEquals(extras.verificarElementoPasadoName(name),true);
     }
 
     @And("^Click en el Button 'REMOVE' \"([^\"]*)\" in page EXTRAS MANAGEMENT$")
-    public void clickEnElButtonREMOVEInPageEXTRASMANAGEMENT(String id) throws Throwable {
-        extras.clickButtonDeleteExtraId(id);
+    public void clickEnElButtonREMOVEInPageEXTRASMANAGEMENT(String name) throws Throwable {
+        extras.clickButtonDeleteExtraName(name);
     }
+
+    @Then("^Verfi for 'ROOM TITLE' \"([^\"]*)\" in page ROOMS MANAGEMENT$")
+    public void verfiForROOMTITLEInPageROOMSMANAGEMENT(String room_Type) throws Throwable {
+        Assert.assertEquals(room.buscarElementoExistente(room_Type),true);
+    }
+
+    @And("^Click Button 'Eliminar' in page ROOMS MANAGEMENT \"([^\"]*)\"$")
+    public void clickButtonEliminarInPageROOMSMANAGEMENT(String roon_Type) throws Throwable {
+        room.buscarElementoAEliminar(roon_Type);
+    }
+
+
 }

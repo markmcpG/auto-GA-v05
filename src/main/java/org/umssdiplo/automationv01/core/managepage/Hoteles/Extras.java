@@ -8,6 +8,7 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Extras extends BasePage {
     @FindBy(css = "a[href=\"#Hotels\"]")
@@ -57,24 +58,36 @@ public class Extras extends BasePage {
         return this;
     }
 
-    public boolean verificarElementoPasadoId(String id) {
-        String css="a[data-primary=\""+id+"\"][title=\"Edit\"]";
-        WebElement aux = webDriver.findElement(By.cssSelector(css));
+    public boolean verificarElementoPasadoName(String name) {
         boolean respuesta=false;
-        if(aux!=null){
-            respuesta = true;
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(3);
+                if(tdElementName.getText().equals(name)){
+                    respuesta=true;
+                    break;
+                }
+            }
         }
-
         return respuesta;
     }
-    public Extras clickButtonUpdateId(String id){
-        String css="a[data-primary=\""+id+"\"][title=\"Edit\"]";
-        WebElement aux = webDriver.findElement(By.cssSelector(css));
-        if(aux!=null){
-            CommonEvents.clickButton(aux);
-        }
-        else{
-            System.out.println("Elemento no existe!!!, A ser Modificado");
+    public Extras clickButtonUpdateName(String name){
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(3);
+                if(tdElementName.getText().equals(name)){
+                    WebElement tdElementButtons = td_collection.get(8);
+                    WebElement btnEdit = tdElementButtons.findElement(By.cssSelector("a[title=\"Edit\"]"));
+                    CommonEvents.clickButton(btnEdit);
+                    break;
+                }
+            }
         }
         return this;
     }
@@ -83,30 +96,25 @@ public class Extras extends BasePage {
         return this;
     }
 
-    public boolean verficarElementoARemoveId(String id) {
-        String css="a[data-primary=\""+id+"\"][data-task=\"remove\"]";
-        boolean respuesta = false;
-        WebElement aux = webDriver.findElement(By.cssSelector(css));
-            if (aux!=null){
-                respuesta = true;
+    public Extras clickButtonDeleteExtraName(String name) {
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(3);
+                if(tdElementName.getText().equals(name)){
+                    WebElement tdElementButtons = td_collection.get(8);
+                    WebElement btnEliminar = tdElementButtons.findElement(By.cssSelector("a[title=\"Remove\"]"));
+                    CommonEvents.clickButton(btnEliminar);
+                    Alert alert = webDriver.switchTo().alert();
+                    alert.accept();
+                    break;
+                }
             }
-            else {
-                System.out.println("Elemento no Existe A Ser Eliminado!!");
-            }
-        return respuesta;
-    }
+        }
 
-    public Extras clickButtonDeleteExtraId(String id) {
-        String css="a[data-primary=\""+id+"\"][data-task=\"remove\"]";
-        WebElement aux = webDriver.findElement(By.cssSelector(css));
-        if (aux!=null){
-            CommonEvents.clickButton(aux);
-            Alert alert = webDriver.switchTo().alert();
-            alert.accept();
-        }
-        else {
-            System.out.println("Elemento no Existe A Ser Eliminado!!");
-        }
         return this;
     }
+
 }

@@ -1,5 +1,5 @@
 Feature: Login
-
+#  @LOGIN
   Background: Home page is displayed once set credential in login page
     Given 'PHP travel' page is loaded
     And fill credentials on 'Login' data
@@ -9,6 +9,7 @@ Feature: Login
 #   Scenario: : Loguin
 # BEGIN OFFERS
   # OFFERS SETTINGS
+#    @REGISTRANDO_NUEVA_CONFIGURACION_OFFERS
     Scenario Outline: Configurando Offers
       Given 'PHP travel section Offers Setting' page is loaded
       And Click en el Menu 'OFFERS' in home menu
@@ -22,6 +23,7 @@ Feature: Login
         |Blank  |Special Offers |8            |
 
   # OFFERS ADD
+ #    @REGISTRANDO_NUEVO_OFFERS
      Scenario Outline: Offer Manage page
        Given  'PHP travel section Offers Manage' page is loaded
        And Click en el Menu 'OFFERS M' in home menu
@@ -40,19 +42,8 @@ Feature: Login
        |status|offer_Title|phone |email       |offer_Price|from       |to         |offer_Description|
        |Enabled|Ejemplo    |123456|eje@php.com |2000       |28/04/2019 |01/07/2019 |Una oferta imperdible|
 
-  # OFFERS DELETE
-     Scenario Outline: Eliminar Offers in page Offer Manage
-       Given  'PHP travel section Offers Manage' page is loaded
-       And Click en el Menu 'OFFERS M' in home menu
-       And Click en el Sub Menu 'Manage Offers' in home menu
-       And Clik en el Button 'All' in page Offers Manage
-       Then Verify Offers existente "<id>"
-       And Click Button 'Eliminar' in page Offer Manager "<id>"
-     Examples:
-       |id  |
-       |104 |
-
   # OFFERS UPDATE
+ #    @MODIFICANDO_CONFIGURACION_OFFERS
      Scenario Outline: Modificar Datos de un Offer in page Offer Manage
        Given 'PHP travel section Offers Manage' page is loaded
        And Click en el Menu 'OFFERS M' in home menu
@@ -73,8 +64,21 @@ Feature: Login
 
 # END OFFERS
 
+  # OFFERS DELETE
+#     @ELIMINANDO_OFFERS
+  Scenario Outline: Eliminar Offers in page Offer Manage
+    Given  'PHP travel section Offers Manage' page is loaded
+    And Click en el Menu 'OFFERS M' in home menu
+    And Click en el Sub Menu 'Manage Offers' in home menu
+    Then Verify Offers existente "<offer_Title>"
+    And Click Button 'Eliminar' in page Offer Manager "<offer_Title>"
+    Examples:
+      |offer_Title  |
+      |Ejemplo |
+
 # BEGIN HOTELS
   # ROOMS ADD
+#     @REGISTARNDO_NUEVO_ROOMS
      Scenario Outline: ROOMS MANAGEMENT ADD page
        Given 'PHP travel section Rooms' page is loaded'
        And Click en el Menu 'HOTELS' in home menu
@@ -92,19 +96,19 @@ Feature: Login
        And Insert input No. of Extra Beds "<num_extra_beds>" in form ROOMS MANAGEMENT Add
        And Insert input Extra Bed Charges "<extra_bed_charges>" in form ROOMS MANAGEMENT Add
        And Click Button 'Submit' in form ROOMS MANAGEMENT Add
-
      Examples:
-       |status    |room_type            |hotel          |room_description|price|quantity|minimum_stay|max_adults|max_children |num_extra_beds |extra_bed_charges|
-       |Disabled  |Two-Bedroom Apartment|Inil Restaurant|habitaciones     |500 |5       |5           |2         |5            |3              |3                |
+       |status    |room_type            |hotel                        |room_description|price|quantity|minimum_stay|max_adults|max_children |num_extra_beds |extra_bed_charges|
+       |Disabled  |Two-Bedroom Apartment| Tria Hotel Istanbul Special |habitaciones     |500 |5       |5           |2         |5            |3              |3                |
 
 # END ROOMS ADD
 
 # BEGIN ROOMS UPDATE
+#    @MODIFICANDO_ROOMS_ID
     Scenario Outline: ROOMS MANAGEMENT EDIT page
       Given 'PHP travel section Rooms' page is loaded'
       And Click en el Menu 'HOTELS' in home menu
       And Click en el Sub Menu 'ROOMS' of menu Hotels
-      And Click en el Button 'EDIT' "<id>" in ROOMS MANAGEMENT
+      And Click en el Button 'EDIT' "<room_type>" in ROOMS MANAGEMENT
       And Select Status "<status>" in form ROOMS MANAGEMENT Add
       And Insert input Room Type "<room_type>" in form ROOMS MANAGEMENT Add
       And Insert input Hotel "<hotel>" in form ROOMS MANAGEMENT Add
@@ -119,24 +123,27 @@ Feature: Login
       And Click Button 'Submit' in form ROOMS MANAGEMENT Edit
 
       Examples:
-        |id|status    |room_type            |hotel          |room_description|price|quantity|minimum_stay|max_adults|max_children |num_extra_beds |extra_bed_charges|
-        |91|Enabled  |Two-Bedroom Apartment|Inil Restaurant|habitaciones     |500 |5       |5           |2         |5            |3              |3                |
+        |status    |room_type               |hotel                    |room_description |price|quantity|minimum_stay|max_adults  |max_children    |num_extra_beds   |extra_bed_charges|
+        |Enabled   |Two-Bedroom Apartment   | Grand Plaza Apartments  |habitaciones     |1100 |4       |4           |1           |3               |2                |2                |
 
 # END ROOMS UPDATE
 
 # BEGIN ROOMS DELETE
+#    @ELEIMINADO_ROOMS_ID
     Scenario Outline: Eliminar ROOMS in page ROOMS MANAGEMENT
       Given 'PHP travel section Rooms' page is loaded'
       And Click en el Menu 'HOTELS' in home menu
       And Click en el Sub Menu 'ROOMS' of menu Hotels
-      And Click Button 'Eliminar' in page ROOMS MANAGEMENT "<id>"
+      Then Verfi for 'ROOM TITLE' "<room_Type>" in page ROOMS MANAGEMENT
+      And Click Button 'Eliminar' in page ROOMS MANAGEMENT "<room_Type>"
       Examples:
-        |id  |
-        |93 |
+        |room_Type|
+        |Two-Bedroom Apartment |
 
 # END ROOMS DELETE
 
 # BEGIN EXTRAS ADD
+#  @REGISTRANDO_NUEVO_EXTRA
   Scenario Outline: EXTRAS MANAGEMENT ADD page
     Given 'PHP travel section EXTRAS' page is loaded'
     And Click en el Menu 'HOTELS' para Extras in home menu
@@ -153,26 +160,29 @@ Feature: Login
 # END EXTRAS
 
 #BEGIN EXTRAS   UPDATE
+#  @MODIFICANDO_EXTRAS_ID
   Scenario Outline: EXTRAS MANAGEMENT UPDATE page
     Given 'PHP travel section EXTRAS' page is loaded'
     And Click en el Menu 'HOTELS' para Extras in home menu
     And Click en el Sub Menu 'EXTRAS' of menu EXTRAS MANAGEMENT
-    Then Verify Extras "<id>" in page EXTRAS MANAGEMENT
-    And Click en el Button 'EDIT' "<id>" in page EXTRAS MANAGEMENT
+    Then Verify Extras "<name>" in page EXTRAS MANAGEMENT
+    And Click en el Button 'EDIT' "<name>" in page EXTRAS MANAGEMENT
     And Insert input Name "<name>" in form EXTRAS MANAGEMENT
     And Select option Status "<status>" in form EXTRAS MANAGEMENT
     And Isert input Price "<price>" in form EXTRAS MANAGEMENT
     And Click en el Button 'Save & Return' in form Update EXTRAS MANAGEMENT
   Examples:
-      |id |name           |status   |price|
-      |14 |Matrimonials   |Yes      |50   |
+      |name           |status   |price|
+      |Matrimonials   |Yes      |80   |
 
+#ELIMINADO EXTRAS
+#  @ELIMINADO_EXTRAS_ID
   Scenario Outline: EXTRAS MANAGEMENT Remove page
     Given 'PHP travel section EXTRAS' page is loaded'
     And Click en el Menu 'HOTELS' para Extras in home menu
     And Click en el Sub Menu 'EXTRAS' of menu EXTRAS MANAGEMENT
-    Then Verify Extras a 'Remove' "<id>" in page EXTRAS MANAGEMENT
-    And Click en el Button 'REMOVE' "<id>" in page EXTRAS MANAGEMENT
+    Then Verify Extras a 'Remove' "<name>" in page EXTRAS MANAGEMENT
+    And Click en el Button 'REMOVE' "<name>" in page EXTRAS MANAGEMENT
   Examples:
-      |id |
-      |14 |
+      |name |
+      |Matrimonials |

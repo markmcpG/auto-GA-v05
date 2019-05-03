@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.util.List;
+
 public class Room extends BasePage {
 
     @FindBy(css = "a[href=\"#Hotels\"]")
@@ -115,14 +117,20 @@ public class Room extends BasePage {
         return this;
     }
 
-    public Room clickButtonEditRoom(String id) {
-        String css= "a[href=\"https://www.phptravels.net/admin/hotels/rooms/manage/"+91+"\"]";
-        WebElement aux = webDriver.findElement(By.cssSelector(css));
-        if(aux!=null){
-            CommonEvents.clickButton(aux);
-        }
-        else{
-            System.out.println("Elemento no existe!!");
+    public Room clickButtonEditRoom(String room_Type) {
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(2);
+                if(tdElementName.getText().equals(room_Type)){
+                    WebElement tdElementButtons = td_collection.get(10);
+                    WebElement btnEdit = tdElementButtons.findElement(By.cssSelector("a[title=\"Edit\"]"));
+                    CommonEvents.clickButton(btnEdit);
+                    break;
+                }
+            }
         }
 
         return this;
@@ -133,20 +141,42 @@ public class Room extends BasePage {
         return this;
     }
 
-    // ELIMINAR
-    public Room verificarRoomAEliminar(String id){
-        CommonEvents.forceWait(4000);
-        WebElement aux = webDriver.findElement(By.cssSelector("a[id=\""+id+"\"]"));
-        if (aux!=null) {
-            CommonEvents.clickButton(aux);
-            Alert alert = webDriver.switchTo().alert();
-            alert.accept();
-        }
-        else {
-            System.out.println("Elemento no ex");
+//ELIMINAR
+    public Room buscarElementoAEliminar(String room_Type){
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(2);
+                if(tdElementName.getText().equals(room_Type)){
+                    WebElement tdElementButtons = td_collection.get(10);
+                    WebElement btnEliminar = tdElementButtons.findElement(By.cssSelector("a[title=\"DELETE\"]"));
+                    CommonEvents.clickButton(btnEliminar);
+                    Alert alert = webDriver.switchTo().alert();
+                    alert.accept();
+                    break;
+                }
+            }
         }
         return this;
     }
 
+    public boolean buscarElementoExistente(String room_type) {
+        boolean respuesta=false;
+        WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
+        List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));
+        for(WebElement trElement : tr_collection){
+            List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
+            if(td_collection.size() != 0 ){
+                WebElement tdElementName = td_collection.get(2);
+                if(tdElementName.getText().equals(room_type)){
+                    respuesta=true;
+                    break;
+                }
+            }
+        }
 
+        return respuesta;
+    }
 }

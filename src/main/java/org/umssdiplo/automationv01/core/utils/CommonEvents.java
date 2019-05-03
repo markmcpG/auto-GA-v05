@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -116,4 +117,16 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    public static void selectOption(WebElement selectOption, String option) {
+        Select select = new Select(selectOption);
+        select.selectByVisibleText(option);
+    }
+
+    public static void forceWait(int milliseconds){
+        try{
+            Thread.sleep(milliseconds);
+        }catch (Exception e){
+            e.fillInStackTrace();
+        }
+    }
 }

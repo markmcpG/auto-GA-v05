@@ -191,6 +191,7 @@ public class Tours extends BasePage {
     }
 
     public void clickSubmitTours() {
+        CommonEvents.forceWait(2000);
         CommonEvents.clickButton(submitToursBtn);
     }
 

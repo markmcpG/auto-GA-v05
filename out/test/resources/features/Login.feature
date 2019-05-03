@@ -1,7 +1,7 @@
 # Login feature review the behavior in thie feature
 Feature: Login
 
-  Scenario: Home page is displayed once set credential in login page
+  Background: Home page is displayed once set credential in login page
     Given 'PHP travel' page is loaded
     And fill credentials on 'Login' data
       |username|password|
@@ -135,7 +135,6 @@ Feature: Login
     Examples:
       |status |tourName     |Quantity|Price |QuantityChild|PriceChild|stars|TotalDays|TotalNights|TourType|Featured|Location1|Deposit   |DepositField|VatTax    | VatTaxField|RelatedTours|AddressOnMap|latitude|longitude|
       |Enabled|Sheraton Trip Test|8       |200   |5            |100       |5    |13       |12         |Holidays |Yes     |Pusa|Percentage|10          |Percentage|  5         |Days Around Thailand|Sheraton Kauai Resort, Hoonani Road, Koloa, HI, United States|21.8768446|-159.4646715|
-
 
 
 

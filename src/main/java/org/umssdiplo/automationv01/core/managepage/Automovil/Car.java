@@ -149,10 +149,12 @@ public class Car extends BasePage {
     }
 
     public void clickMenuCars(){
+        CommonEvents.forceWait(1000);
         CommonEvents.clickButton(carMenuBtn);
     }
     public void clickSubMenuCars()
     {
+        CommonEvents.forceWait(1000);
         CommonEvents.clickButton(carsSubMenuBtn);
     }
     public void clickButtonAdd()
@@ -234,6 +236,7 @@ public class Car extends BasePage {
     }
 
     public void clickSubMenuExtras() {
+        CommonEvents.forceWait(1000);
         CommonEvents.clickButton(extrasSubMenuBtn);
     }
 
@@ -284,6 +287,7 @@ public class Car extends BasePage {
     }
     public void clickButtonSaveReturnExtra(){
         CommonEvents.clickButton(saveReturnExtraBtn);
+        CommonEvents.forceWait(2000);
     }
 
     public void clickButtonDeleteExtra(String name) {
@@ -384,10 +388,12 @@ public class Car extends BasePage {
 
             }
         }
+        CommonEvents.forceWait(2000);
 
     }
 
     public String searchCar(String name){
+        CommonEvents.forceWait(2000);
         String found = "";
         WebElement table_element = webDriver.findElement(By.xpath("//table/tbody"));
         List<WebElement> tr_collection = table_element.findElements(By.xpath("//tr"));

@@ -165,6 +165,7 @@ public class StepsDefinitionPHPtravel {
 
     @And("^Click on the 'EXTRAS' button  in the submenu$")
     public void clickOnTheEXTRASButtonInTheSubmenu() {
+
         automovil.clickSubMenuExtras();
     }
 
@@ -487,6 +488,7 @@ public class StepsDefinitionPHPtravel {
 
     @Then("^verify the car \"([^\"]*)\" exist in 'Cars' page$")
     public void verifyTheCarExistInCarsPage(String carNameExpected) throws Throwable {
+
         String carNameActual = automovil.searchCar(carNameExpected);
         assertEquals(carNameActual, carNameExpected);
     }

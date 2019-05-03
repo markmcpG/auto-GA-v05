@@ -137,7 +137,7 @@ Feature: Login
       |Enabled|Sheraton Trip Test|8       |200   |5            |100       |5    |13       |12         |Holidays |Yes     |Pusa|Percentage|10          |Percentage|  5         |Days Around Thailand|Sheraton Kauai Resort, Hoonani Road, Koloa, HI, United States|21.8768446|-159.4646715|
 
 
-    
+
   Scenario Outline: Delete Tours
     Given 'PHP travel section Tours' page is loaded
     And Click on the 'TOURS' button  in the menu

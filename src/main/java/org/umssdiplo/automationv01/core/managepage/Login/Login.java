@@ -26,5 +26,6 @@ public class Login extends BasePage {
         CommonEvents.setInputField(usernameInputField, username);
         CommonEvents.setInputField(passwordInputField, password);
         CommonEvents.clickButton(loginBtn);
+
     }
 }

@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.core.utils;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Modelo.Aeropuerto;
+import org.umssdiplo.automationv01.core.managepage.Modelo.Vuelo;
 
 public final class LoadPage {
     public static Login loginPage() {
@@ -11,9 +12,9 @@ public final class LoadPage {
         return new Login();
     }
 
-    public static Aeropuerto aeropuertoPage() {
+    public static Vuelo vueloPage() {
        // ManageDriver.getInstance().getWebDriver()
         //        .navigate().to();
-        return new Aeropuerto();
+        return new Vuelo();
     }
 }

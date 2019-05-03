@@ -1,10 +1,8 @@
 package org.umssdiplo.automationv01.core.utils;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -122,6 +120,17 @@ public class CommonEvents {
         }catch (Exception e){
             e.fillInStackTrace();
         }
+    }
+
+    public static void goComponent(WebElement element, WebDriver driver){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);"+ "window.scrollBy(0,-100);",element);
+        forceWait(1000);
+    }
+
+    public static void selectOption(WebElement selectOption, String option) {
+        Select select = new Select(selectOption);
+        select.selectByVisibleText(option);
     }
 
 }

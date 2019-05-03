@@ -35,9 +35,16 @@ dependencies {
 
     // cucumber-testng
     testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+<<<<<<< HEAD
 
     // https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer
     testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+=======
+    
+    // https://mvnrepository.com/artifact/org.picocontainer/picocontainer
+    compile group: 'org.picocontainer', name: 'picocontainer', version: '2.10.2'
+
+>>>>>>> daniel
 }
 
 task runFeatures(type: Test) {

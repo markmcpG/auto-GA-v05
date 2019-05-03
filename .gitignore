@@ -43,3 +43,9 @@ bin/
 gradle/
 gradlew
 gradlew.bat
+
+#node_modules
+node_modules/
+out/*
+
+

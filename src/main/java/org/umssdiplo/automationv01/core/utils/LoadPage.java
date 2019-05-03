@@ -1,5 +1,7 @@
 package org.umssdiplo.automationv01.core.utils;
 
+import org.picocontainer.DefaultPicoContainer;
+import org.picocontainer.MutablePicoContainer;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import org.umssdiplo.automationv01.core.managepage.Hoteles.Extras;
 import org.umssdiplo.automationv01.core.managepage.Hoteles.Hotel;
@@ -15,7 +17,10 @@ public final class LoadPage {
         return new Login();
     }
     public static Hotel hotelPage() {
-        return new Hotel();
+        MutablePicoContainer pico = new DefaultPicoContainer();
+        pico.addComponent(Hotel.class);
+        Hotel hotel = pico.getComponent(Hotel.class);
+        return hotel;
     }
     public static Room roomPage(){
         return new Room();

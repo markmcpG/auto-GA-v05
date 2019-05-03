@@ -1,7 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,6 +12,9 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersManage;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersSetting;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
+import java.util.List;
+import java.util.Map;
 
 public class StepsDefinitionPHPtravel {
     private Hotel hotel;
@@ -35,7 +37,7 @@ public class StepsDefinitionPHPtravel {
 
     @Given("^'PHP travel section Hotels' page is loaded whit url$")
     public void phpTravelSectionHotelsPageIsLoadedWhitUrl() {
-        hotel = LoadPage.hotelPage();
+        //hotel = LoadPage.hotelPage();
     }
 
     @Given("^'PHP travel section Offers Setting' page is loaded$")
@@ -368,6 +370,26 @@ public class StepsDefinitionPHPtravel {
     @And("^Click Button 'Eliminar' in page ROOMS MANAGEMENT \"([^\"]*)\"$")
     public void clickButtonEliminarInPageROOMSMANAGEMENT(String roon_Type) throws Throwable {
         room.buscarElementoAEliminar(roon_Type);
+    }
+
+
+    @Given("^'PHP travel section Hotels' page is loaded whit$")
+    public void phpTravelSectionHotelsPageIsLoadedWhit() {
+        hotel = LoadPage.hotelPage();
+    }
+
+
+    @And("^Contenido pico$")
+    public void contenidoPico() {
+        hotel.getLista();
+    }
+
+    @And("^Agregar$")
+    public void agregar(DataTable dt) {
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        hotel.AgregarList(list.get(0).get("name"));
+        hotel.AgregarList(list.get(1).get("name"));
+
     }
 
 

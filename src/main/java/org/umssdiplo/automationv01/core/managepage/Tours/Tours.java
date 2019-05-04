@@ -199,7 +199,7 @@ public class Tours extends BasePage {
     public void selectOptionToursLocation1(String location){
         CommonEvents.clickButton(location1ToursBtn);
         CommonEvents.setInputField(longitudeToursInputField, location);
-        CommonEvents.forceWait(2000);
+        CommonEvents.forceWait(5000);
         CommonEvents.clickButton(selectTourslocation1);
 
 

@@ -138,12 +138,3 @@ Feature: Login
 
 
 
-  Scenario Outline: Delete Tours
-    Given 'PHP travel section Tours' page is loaded
-    And Click on the 'TOURS' button  in the menu
-    And Click on the 'TOURS' button  in the submenu
-    Then verify the tours "<tourName>" exist in 'TOURS' page
-    And Click on the 'DELETE' button "<tourName>" in 'TOURS' page
-    Examples:
-      |tourName|
-      |Sheraton Trip Test|

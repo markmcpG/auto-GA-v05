@@ -138,9 +138,13 @@ public class CommonEvents {
         select.selectByVisibleText(option);
     }
 
+
     public static void hoverMenus(WebElement webElement) {
         Actions action = new Actions(ManageDriver.getInstance().getWebDriver());
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         action.moveToElement(webElement).perform();
+
     }
+
+
 }

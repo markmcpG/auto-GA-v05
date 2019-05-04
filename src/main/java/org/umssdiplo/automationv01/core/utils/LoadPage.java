@@ -8,6 +8,10 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Modelo.Vuelo;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersManage;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersSetting;
+import org.umssdiplo.automationv01.core.managepage.Automovil.Car;
+import org.umssdiplo.automationv01.core.managepage.Login.Login;
+import org.umssdiplo.automationv01.core.managepage.Tours.Tours;
+
 
 public final class LoadPage {
     public static Login loginPage() {
@@ -33,7 +37,18 @@ public final class LoadPage {
     public static OffersManage offersManagePage(){
         return new OffersManage();
     }
-    public static Extras extrasPage(){
+    public static Extras extrasPage() {
         return new Extras();
+    }
+
+    public static Car carsPage() {
+        Car autoRes = new Car();
+        return autoRes;
+    }
+
+
+    public static Tours toursPage() {
+        Tours tours = new Tours();
+        return tours;
     }
 }

@@ -7,6 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.umssdiplo.automationv01.core.managepage.Automovil.Car;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
+import org.umssdiplo.automationv01.core.managepage.PicoContainerC;
 import org.umssdiplo.automationv01.core.managepage.Tours.Tours;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -16,7 +17,11 @@ public class StepsDefinitionPHPtravel {
     private Login login;
     private Car automovil;
     private Tours tours;
+    private PicoContainerC picoC;
 
+    public StepsDefinitionPHPtravel() {
+        picoC = new PicoContainerC();
+    }
 
     @Given("^'PHP travel' page is loaded$")
     public void phpTravelPageIsLoaded() throws Throwable {
@@ -31,7 +36,7 @@ public class StepsDefinitionPHPtravel {
 
     @And("^'PHP travel section Cars' page is loaded$")
     public void phpTravelSectionCarsPageIsLoaded() {
-        automovil = LoadPage.carsPage();
+        automovil = picoC.getCar();
     }
 
 
@@ -160,7 +165,7 @@ public class StepsDefinitionPHPtravel {
 
     @And("^'PHP travel section Extra' page is loaded$")
     public void phpTravelSectionExtraPageIsLoaded() {
-        automovil = LoadPage.carsPage();
+        automovil = picoC.getCar();
     }
 
     @And("^Click on the 'EXTRAS' button  in the submenu$")
@@ -321,7 +326,7 @@ public class StepsDefinitionPHPtravel {
 
     @And("^'PHP travel section Tours' page is loaded$")
     public void phpTravelSectionToursPageIsLoaded() {
-        tours = LoadPage.toursPage();
+        tours = picoC.getTours();
     }
 
     @And("^Click on the 'TOURS' button  in the menu$")

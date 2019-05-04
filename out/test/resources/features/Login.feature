@@ -1,71 +1,13 @@
 # Login feature review the behavior in thie feature
 Feature: Login
 
-  Background: Home page is displayed once set credential in login page
+  Scenario: Home page is displayed once set credential in login page
     Given 'PHP travel' page is loaded
     And fill credentials on 'Login' data
       |username|password|
       |admin@phptravels.com|demoadmin|
 
-  Scenario Outline: Create Car
-    Given 'PHP travel section Cars' page is loaded
-    And Click on the 'CARS' button  in the menu
-    And Click on the 'CARS' button  in the Submenu
-    And Click on the 'ADD' button  in 'CARS' page
-    And select "<status>" select option in 'Add Car' page
-    And fill "<name>" car name field in 'Add Car' page
-    And fill "<Description>" 'Car Description' field in 'Add Car' page
-    And select "<stars>" Stars select option in 'Add Car' page
-    And select "<Passengers>" Passengers select option in 'Add Car' page
-    And select "<Doors>" 'Car Doors' select option in 'Add Car' page
-    And select "<Transmision>" 'Transmission' select option in 'Add Car' page
-    And select "<Baggage>" 'Baggage' select option in 'Add Car' page
-    And select "<AirportPickup>" 'AirportPickup' select option in 'Add Car' page
-    And select "<Featured>" 'Featured' select option in 'Add Car' page
-    And fill "<FeaturedFrom>" 'From' field in 'Add Car' page
-    And fill "<FeaturedTo>" 'To' field in 'Add Car' page
-    And select "<Deposit>" 'Deposit / Commission' select option in 'Add Car' page
-    And select "<VatTax>" 'Vat Tax' select option in 'Add Car' page
-    And fill "<relatedCars>" related cars field in 'Add Car' page
-    And click on the 'SUBMIT' button in 'Add Car' page
-    Examples:
-      |name        |status |Description|stars|Passengers|Doors|Transmision|Baggage|AirportPickup|Featured|FeaturedFrom|FeaturedTo|Deposit|VatTax|relatedCars|
-      |grand vitara|Disabled|des|3|5|4|Manual|x4|No|Yes|16/05/2019|17/05/2019|Percentage|Percentage|Nisan Micra 2011|
-
-  Scenario Outline: Edit Car
-    Given 'PHP travel section Cars' page is loaded
-    And Click on the 'CARS' button  in the menu
-    And Click on the 'CARS' button  in the Submenu
-    And Click on the 'Edit' button "<searchName>" in 'Cars' page
-    And select "<status>" 'Status' select option in 'Edit Car' form
-    And fill "<name>" 'Car Name'car name field in 'Edit Car' form
-    And select "<stars>" 'Stars' select option in 'Edit Car' form
-    And select "<Passengers>" 'Passengers' select option in 'Edit Car' form
-    And select "<Doors>" 'Car Doors' select option in 'Edit Car' form
-    And select "<Transmision>" 'Transmission' select option in 'Edit Car' form
-    And select "<Baggage>" 'Baggage' select option in 'Edit Car' form
-    And select "<AirportPickup>" 'AirportPickup' select option in 'Edit Car' form
-    And select "<Featured>" 'Featured' select option in 'Edit Car' form
-    And fill "<FeaturedFrom>" 'From' field in 'Edit Car' form
-    And fill "<FeaturedTo>" 'To' field in 'Edit Car' form
-    And select "<Deposit>" 'Deposit / Commission' select option in 'Edit Car' form
-    And select "<VatTax>" 'Vat Tax' select option in 'Edit Car' form
-    And fill "<relatedCars>" 'related cars' field in 'Edit Car' form
-    And click on the 'SUBMIT' button in 'Edit Car' form
-    Examples:
-      |searchName|name        |status |stars|Passengers|Doors|Transmision|Baggage|AirportPickup|Featured|FeaturedFrom|FeaturedTo|Deposit|VatTax|relatedCars|
-      |grand vitara|vitara|Enabled|1|6|5|Auto|x2|Yes|No|18/05/2019|19/05/2019|Fixed|Fixed|Kia Pacanto 2014|
-
-
-  Scenario Outline: Delete Car
-    Given 'PHP travel section Cars' page is loaded
-    And Click on the 'CARS' button  in the menu
-    And Click on the 'CARS' button  in the Submenu
-    Then verify the car "<Name>" exist in 'Cars' page
-    And Click on the 'DELETE' button "<Name>" in 'Cars' page
-    Examples:
-      |Name|
-      |vitara|
+  
 
   Scenario Outline: Create Extra Car
     Given 'PHP travel section Extra' page is loaded
@@ -138,12 +80,3 @@ Feature: Login
 
 
 
-  Scenario Outline: Delete Tours
-    Given 'PHP travel section Tours' page is loaded
-    And Click on the 'TOURS' button  in the menu
-    And Click on the 'TOURS' button  in the submenu
-    Then verify the tours "<tourName>" exist in 'TOURS' page
-    And Click on the 'DELETE' button "<tourName>" in 'TOURS' page
-    Examples:
-      |tourName|
-      |Sheraton Trip Test|

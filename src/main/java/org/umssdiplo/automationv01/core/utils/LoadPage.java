@@ -11,7 +11,7 @@ public final class LoadPage {
                 .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new Login();
     }
-    public static Car carsPage() {
+    /*public static Car carsPage() {
         Car autoRes = new Car();
         return autoRes;
     }
@@ -20,5 +20,5 @@ public final class LoadPage {
     public static Tours toursPage() {
         Tours tours = new Tours();
         return tours;
-    }
+    }*/
 }

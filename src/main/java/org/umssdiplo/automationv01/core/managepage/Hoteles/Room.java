@@ -136,6 +136,7 @@ public class Room extends BasePage {
         return this;
     }
     public Room clickButtonSubmitEditRoom(){
+        CommonEvents.forceWait(2000);
         CommonEvents.scrollComponent(buttonSubmitEditRoom,webDriver);
         CommonEvents.clickButton(buttonSubmitEditRoom);
         return this;
@@ -159,6 +160,7 @@ public class Room extends BasePage {
                 }
             }
         }
+        CommonEvents.forceWait(3000);
         return this;
     }
 

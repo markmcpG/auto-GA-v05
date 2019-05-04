@@ -68,6 +68,7 @@ public class OffersManage extends BasePage {
     public OffersManage clickMenuOffer(){
         CommonEvents.scrollComponent(menuSelectOffer,webDriver);
         CommonEvents.clickButton(menuSelectOffer);
+        CommonEvents.forceWait(3000);
         return this;
     }
     public OffersManage clicksubMenuOffersManager(){
@@ -112,16 +113,17 @@ public class OffersManage extends BasePage {
     }
     // insertando descripcion
     public OffersManage setTextAreaDescripcionAdd(String descri) {
-        CommonEvents.scrollComponent(buttonSubmitAdd,webDriver);
+       /* CommonEvents.scrollComponent(buttonSubmitAdd,webDriver);
         String xpath = "/html[1]/body[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[1]/div[1]";
         WebElement table_element = webDriver.findElement(By.xpath(xpath));
         table_element.click();
-        table_element.sendKeys("MONTYYYYYYYYYYYYYYYYYYYY");
+        table_element.sendKeys("prueba");*/
 
         return this;
     }
     public OffersManage clickButtonSubmitAdd(){
         CommonEvents.clickButton(buttonSubmitAdd);
+        CommonEvents.forceWait(5000);
         return this;
     }
     // END FORMULARIO ADD
@@ -223,7 +225,7 @@ public class OffersManage extends BasePage {
 
     // insertando descripcion
     public OffersManage setTextAreaDescripcionEdit(String descri) {
-        CommonEvents.scrollComponent(buttonSubmitEdit,webDriver);
+        //CommonEvents.scrollComponent(buttonSubmitEdit,webDriver);
         //CommonEvents.setInputField(textAreaOfferDesAdd,descri);
         return this;
     }

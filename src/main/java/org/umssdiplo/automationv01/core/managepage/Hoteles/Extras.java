@@ -33,6 +33,7 @@ public class Extras extends BasePage {
         return this;
     }
     public Extras clickSubMenuHotelsExtras(){
+        CommonEvents.scrollComponent(subMenuHotelsExtras,webDriver);
         CommonEvents.clickButton(subMenuHotelsExtras);
         return this;
     }

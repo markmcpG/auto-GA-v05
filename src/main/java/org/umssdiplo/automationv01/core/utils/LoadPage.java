@@ -11,27 +11,45 @@ import org.umssdiplo.automationv01.core.managepage.Offers.OffersManage;
 import org.umssdiplo.automationv01.core.managepage.Offers.OffersSetting;
 
 public final class LoadPage {
+    static MutablePicoContainer pico = new DefaultPicoContainer();
+
     public static Login loginPage() {
         ManageDriver.getInstance().getWebDriver()
                 .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new Login();
     }
     public static Hotel hotelPage() {
-        MutablePicoContainer pico = new DefaultPicoContainer();
         pico.addComponent(Hotel.class);
         Hotel hotel = pico.getComponent(Hotel.class);
         return hotel;
     }
     public static Room roomPage(){
-        return new Room();
+        pico.addComponent(Room.class);
+        Room room = pico.getComponent(Room.class);
+        return room;
     }
+    public static Room getRoom(){
+        Room room = pico.getComponent(Room.class);
+        return room;
+    }
+
     public static OffersSetting offersSettingPage(){
-        return new OffersSetting();
+        pico.addComponent(OffersSetting.class);
+        OffersSetting offersSetting = pico.getComponent(OffersSetting.class);
+        return offersSetting;
     }
     public static OffersManage offersManagePage(){
-        return new OffersManage();
+        pico.addComponent(OffersManage.class);
+        OffersManage offersManage = pico.getComponent(OffersManage.class);
+        return offersManage;
     }
     public static Extras extrasPage(){
-        return new Extras();
+        pico.addComponent(Extras.class);
+        Extras extras = pico.getComponent(Extras.class);
+        return extras;
+    }
+    public static Extras getExtras(){
+        Extras extras = pico.getComponent(Extras.class);
+        return extras;
     }
 }

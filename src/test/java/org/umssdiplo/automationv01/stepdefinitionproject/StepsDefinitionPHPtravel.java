@@ -393,4 +393,23 @@ public class StepsDefinitionPHPtravel {
     }
 
 
+    @Given("^'PHP travel section Rooms' page is loaded' Update$")
+    public void phpTravelSectionRoomsPageIsLoadedUpdate() {
+        room = LoadPage.getRoom();
+    }
+
+    @Given("^'PHP travel section Rooms' page is loaded' Delete$")
+    public void phpTravelSectionRoomsPageIsLoadedDelete() {
+        room = LoadPage.getRoom();
+    }
+
+    @Given("^'PHP travel section EXTRAS' page is loaded' Update$")
+    public void phpTravelSectionEXTRASPageIsLoadedUpdate() {
+        extras = LoadPage.getExtras();
+    }
+
+    @Given("^'PHP travel section EXTRAS' page is loaded' Delete$")
+    public void phpTravelSectionEXTRASPageIsLoadedDelete() {
+        extras = LoadPage.getExtras();
+    }
 }

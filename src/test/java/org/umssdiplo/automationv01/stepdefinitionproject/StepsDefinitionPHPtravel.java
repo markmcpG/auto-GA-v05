@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Modelo.Country;
 import org.umssdiplo.automationv01.core.managepage.Modelo.Vuelo;
+import org.umssdiplo.automationv01.core.managepage.PicoContainer;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.util.Map;
